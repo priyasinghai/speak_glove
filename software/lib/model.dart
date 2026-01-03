@@ -8,7 +8,7 @@ class SignLanguageModel {
 
   static Future<SignLanguageModel> create() async {
     final model = SignLanguageModel._();
-    await model._loadModel();`
+    await model._loadModel();
     return model;
   }
 
