@@ -1,0 +1,40 @@
+name: dp
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_blue_plus: ^1.34.0
+  permission_handler: ^11.0.1
+  provider: ^6.1.1
+  cupertino_icons: ^1.0.8
+  flutter_tts: ^3.8.5
+  http: ^1.2.2
+  tflite_flutter: ^0.11.0
+  path_provider: ^2.1.5
+  speech_to_text: ^7.3.0
+  agora_rtc_engine: ^6.2.1
+
+
+
+  flutter_sound: ^9.3.12
+
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/sign_language_model.tflite
+    - assets/zones.csv
