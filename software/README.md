@@ -1,16 +1,59 @@
-# speak_glove
+💻 Software Architecture & Workflow
 
-A new Flutter project.
+The software system of the Speak and Listen Glove handles gesture recognition, speech generation, haptic feedback, and secure administration. It is composed of a mobile application and a backend system.
 
-## Getting Started
+📱 Mobile Application
 
-This project is a starting point for a Flutter application.
+The mobile application is developed using Flutter, enabling cross-platform support for both Android and iOS devices. It serves as the primary interface between the user and the smart glove.
 
-A few resources to get you started if this is your first Flutter project:
+Communication between the glove and the app is achieved using Bluetooth Low Energy (BLE). The glove continuously transmits data from five flex sensors, which are normalized into three discrete zones:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+0 – Straight
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1 – Bent
+
+2 – Folded
+
+🗣️ Talking Mode (Gesture → Speech)
+
+In Talking Mode, the software follows the pipeline below:
+
+Receives five flex sensor values via BLE.
+
+Converts sensor values into zone representations.
+
+Matches zone patterns with a predefined CSV-based gesture mapping.
+
+If no match is found, an on-device TensorFlow Lite ML model predicts the gesture.
+
+Recognized letters are passed to the WordBuilder module to form words and sentences.
+
+The final text output is converted to audio using Text-to-Speech (TTS).
+
+⚠️ No vibration motors are used in this mode.
+
+🧏 Speaking Mode (Speech → Gesture Guidance)
+
+In Speaking Mode, the system reverses the interaction flow:
+
+The application listens to a speaker using Speech-to-Text (STT).
+
+Recognized speech is broken down into individual letters.
+
+Each letter is mapped to its expected finger zone pattern using the CSV mapping.
+
+Expected zones are compared with live zones received from the glove.
+
+If a finger’s zone does not match, the corresponding vibration motor is activated.
+
+When the zones match, the vibration stops, guiding the user to correctly form the gesture.
+
+🛠 Backend System
+
+The backend is implemented using Node.js (Express.js) and handles all administrative and management tasks, including:
+
+User authentication
+
+BLE device registration and monitoring
+
+CSV gesture mapping updates
