@@ -1,8 +1,8 @@
-💻 Software Architecture & Workflow
+### 💻 Software Architecture & Workflow
 
 The software system of the Speak and Listen Glove handles gesture recognition, speech generation, haptic feedback, and secure administration. It is composed of a mobile application and a backend system.
 
-📱 Mobile Application
+### 📱 Mobile Application
 
 The mobile application is developed using Flutter, enabling cross-platform support for both Android and iOS devices. It serves as the primary interface between the user and the smart glove.
 
@@ -14,7 +14,7 @@ Communication between the glove and the app is achieved using Bluetooth Low Ener
 
 2 – Folded
 
-🗣️ Talking Mode (Gesture → Speech)
+### 🗣️ Talking Mode (Gesture → Speech)
 
 In Talking Mode, the software follows the pipeline below:
 
@@ -32,7 +32,7 @@ The final text output is converted to audio using Text-to-Speech (TTS).
 
 ⚠️ No vibration motors are used in this mode.
 
-🧏 Speaking Mode (Speech → Gesture Guidance)
+### 🧏 Speaking Mode (Speech → Gesture Guidance)
 
 In Speaking Mode, the system reverses the interaction flow:
 
@@ -48,12 +48,4 @@ If a finger’s zone does not match, the corresponding vibration motor is activa
 
 When the zones match, the vibration stops, guiding the user to correctly form the gesture.
 
-🛠 Backend System
 
-The backend is implemented using Node.js (Express.js) and handles all administrative and management tasks, including:
-
-User authentication
-
-BLE device registration and monitoring
-
-CSV gesture mapping updates
